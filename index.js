@@ -3,6 +3,7 @@ angular.module('botApp', [])
     getkeywordList()
     $scope.isEdit = false
     $scope.save = function () {
+      $scope.isEdit = false
       $scope.key = $scope.key.split(' ')
       $scope.key = $scope.key.join()
       var req = {
