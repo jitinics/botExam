@@ -41,6 +41,7 @@ app.post('/webhook/', function (req, res) {
       }else if (text[0] === 'avg') {
         respone = avg(text)
       } else {
+        text = text.join()
         console.log(text)
         return
       }
