@@ -12,12 +12,13 @@ app.use(express.static('public'))
 app.get('/webhook/', function (req, res) {
   if (req.query['hub.verify_token'] === 'bot_messenger_page') {
     res.send(req.query['hub.challenge'])
+    return
   }
   res.send('Error, wrong validation token')
 })
 
 app.post('/webhook/', function (req, res) {
-  console.log(res.body)
+  console.log(req.body)
   res.sendStatus(200)
 })
 
