@@ -40,7 +40,7 @@ app.post('/webhook/', function (req, res) {
         respone = avg(text)
       } else {
         text = text.join()
-        keyWord = fs.readFileSync(keyWord)
+        keyWord = fs.readFileSync('./keyword.json')
         keyWord = JSON.parse(keyWord)
         if (keyWord[text]) {
           console.log(keyWord)
