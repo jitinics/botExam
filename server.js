@@ -33,6 +33,27 @@ app.post('/keyword', function (req, res) {
     res.send("It's saved!")
   })
 })
+app.get('/keyword', function (req, res) {
+  console.log(req.body)
+  var keyWord = fs.readFileSync('./keyword.json')
+  keyWord = JSON.parse(keyWord)
+  keyWord = JSON.stringify(keyWord)
+  res.send(keyWord)
+})
+app.delete('/keyword', function (req, res) {
+  console.log(req.body)
+  var keyWord = fs.readFileSync('./keyword.json')
+  keyWord = JSON.parse(keyWord)
+  delete keyWord[req.body.key]
+  keyWord = JSON.stringify(keyWord)
+  fs.writeFile('./keyword.json', keyWord, (err) => {
+    if (err) {
+      res.send(err)
+      return
+    }
+    res.send("It's saved!")
+  })
+})
 app.post('/webhook/', function (req, res) {
   res.sendStatus(200)
   var messaging_events = req.body.entry[0].messaging

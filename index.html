@@ -6,10 +6,27 @@
 	<script type="text/javascript" src="./index.js"></script>
 </head>
 <body ng-controller="botAppController">
-	keyWord :
-	<input type="text" ng-model="key">
-	Answer :
-	<input type="text" ng-model="ans">
-	<button ng-click="save()">save</button>
+	<table>
+		<tr>
+			<td>Question</td>
+			<td>Answer</td>
+		</tr>
+		<tr ng-repeat="(key,value) in list">
+			<td>{{key}}</td>
+			<td>{{value}}</td>
+			<td ng-click="edit(key,value)">edit</td>
+			<td ng-click="delete(key)">delete</td>
+		</tr>
+		<tr>
+			<td><input type="text" ng-model="key"></td>
+			<td><input type="text" ng-model="ans"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button ng-click="save()">save</button>
+			</td>
+		</tr>
+		
+	</table>
 </body>
 </html>
