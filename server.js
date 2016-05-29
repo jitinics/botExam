@@ -41,9 +41,9 @@ app.post('/webhook/', function (req, res) {
       } else {
         text = text.join()
         keyWord = fs.readFileSync('./keyword.json')
+        console.log(keyWord)
         keyWord = JSON.parse(keyWord)
         if (keyWord[text]) {
-          console.log(keyWord)
           sendTextMessage(sender, keyWord[text])
         }
         return
