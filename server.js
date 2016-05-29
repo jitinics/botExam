@@ -3,6 +3,8 @@ var bodyParser = require('body-parser')
 var app = express()
 var request = require('request')
 var fs = require('fs')
+app.use(express.static(__dirname))
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
