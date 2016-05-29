@@ -29,7 +29,6 @@ app.post('/webhook/', function (req, res) {
     event = req.body.entry[0].messaging[i]
     sender = event.sender.id
     if (event.message && event.message.text) {
-      console.log(event.message.text)
       text = event.message.text
       text = text.split(' ')
       if (text[0] === 'sum') {
@@ -43,7 +42,7 @@ app.post('/webhook/', function (req, res) {
       } else {
         text = text.join()
         if (keyWord[text]) {
-          console.log(keyWord[text])
+          sendTextMessage(sender, keyWord[text])
         }
         return
       }
