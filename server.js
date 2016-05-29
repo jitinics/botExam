@@ -55,18 +55,18 @@ function sum (data) {
   return ans
 }
 function max (data) {
-  var ans = data[1]
+  var ans = parseInt(data[1], 10)
   for (var i = 2;i < data.length;i++) {
-    if (data[i] > ans) {
+    if (parseInt(data[i], 10) > ans) {
       ans = parseInt(data[i], 10)
     }
   }
   return ans
 }
 function min (data) {
-  var ans = data[1]
+  var ans = parseInt(data[1], 10)
   for (var i = 2;i < data.length;i++) {
-    if (data[i] < ans) {
+    if (parseInt(data[i], 10) < ans) {
       ans = parseInt(data[i], 10)
     }
   }
