@@ -40,6 +40,7 @@ app.post('/webhook/', function (req, res) {
       } else {
         return
       }
+      console.log('1', sender, respone)
       sendTextMessage(sender, respone)
     }
   }
