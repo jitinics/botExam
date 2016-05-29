@@ -1,6 +1,7 @@
 angular.module('botApp', [])
   .controller('botAppController', ['$scope', '$http', function ($scope, $http) {
     getkeywordList()
+    $scope.isEdit = false
     $scope.save = function () {
       $scope.key = $scope.key.split(' ')
       $scope.key = $scope.key.join()
@@ -25,6 +26,7 @@ angular.module('botApp', [])
     $scope.edit = function (key, val) {
       $scope.key = key
       $scope.ans = val
+      $scope.isEdit = true
     }
     $scope.delete = function (key) {
       var req = {
@@ -34,7 +36,7 @@ angular.module('botApp', [])
           'Content-Type': 'application/json'
         },
         data: {
-          'key': $scope.key
+          'key': key
         }
       }
       $http(req).then(function (res) {
