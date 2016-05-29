@@ -2,9 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
 var request = require('request')
-var keyWord = {
-  'สวัสดี': 'สวัสดีครับ'
-}
+var fs = require('fs')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -25,6 +23,7 @@ app.post('/webhook/', function (req, res) {
   var sender
   var text
   var respone
+  var keyWord
   for (var i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i]
     sender = event.sender.id
@@ -41,7 +40,10 @@ app.post('/webhook/', function (req, res) {
         respone = avg(text)
       } else {
         text = text.join()
+        keyWord = fs.readFileSync(keyWord)
+        keyWord = JSON.parse(keyWord)
         if (keyWord[text]) {
+          console.log(keyWord)
           sendTextMessage(sender, keyWord[text])
         }
         return
