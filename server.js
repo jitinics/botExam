@@ -16,16 +16,14 @@ app.get('/webhook/', function (req, res) {
   res.send('Error, wrong validation token')
 })
 app.post('/keyword', function (req, res) {
-  var newKeyWord = JSON.parse(req.body)
-  if (!newKeyWord) {
-    res.send('you must send parameter')
-    return
-  }
+  console.log(req.body)
+  var newKeyWord = req.body
   var keyWord = fs.readFileSync('./keyword.json')
   keyWord = JSON.parse(keyWord)
   keyWord[newKeyWord.key] = newKeyWord.value
   keyWord = JSON.stringify(keyWord)
-  fs.writeFile('message.txt', 'keyWord', (err) => {
+  console.log(keyWord)
+  fs.writeFile('./keyword.json', keyWord, (err) => {
     if (err) {
       res.send(err)
       return
