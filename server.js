@@ -79,6 +79,7 @@ function avg (data) {
 var token = 'EAAG4ZCpU9FlABAPGEs9n6SdY4nCvjMiGAY7N743o4Lk4MjVPjOkPrkehxx0ybKNiNZCYYuRYj3W6TCC6psI1x1fAWngDA7KbsTfRXvAsPMeWboGCHkR9SD6wBlZCJDZB8cA9w8OhwMUCLuxFX6orrm7N2zXxrBWpYDrsQqLFnAZDZD'
 
 function sendTextMessage (sender, text) {
+  console.log(sender, text)
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {access_token: token},
