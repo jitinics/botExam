@@ -42,7 +42,9 @@ app.post('/webhook/', function (req, res) {
         respone = avg(text)
       } else {
         text = text.join()
-        console.log(text)
+        if (keyWord[text]) {
+          console.log(keyWord[text])
+        }
         return
       }
       console.log('1', sender, respone)
