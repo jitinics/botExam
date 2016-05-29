@@ -2,6 +2,8 @@ angular.module('botApp', [])
   .controller('botAppController', ['$scope', '$http', function ($scope, $http) {
     getkeywordList()
     $scope.save = function () {
+      $scope.key = $scope.key.split(' ')
+      $scope.key = $scope.key.join()
       var req = {
         method: 'POST',
         url: './keyword',
