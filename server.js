@@ -29,7 +29,8 @@ app.post('/webhook/', function (req, res) {
     sender = event.sender.id
     if (event.message && event.message.text) {
       console.log(event.message.text)
-      text = event.message.text.toString().spilt(' ')
+      text = event.message.text
+      text = text.split(' ')
       if (text[0] === 'sum') {
         respone = sum(text)
       }else if (text[0] === 'max') {
