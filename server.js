@@ -15,7 +15,24 @@ app.get('/webhook/', function (req, res) {
   }
   res.send('Error, wrong validation token')
 })
-
+app.post('/keyword', function (req, res) {
+  var newKeyWord = JSON.parse(req.body)
+  if (!newKeyWord) {
+    res.send('you must send parameter')
+    return
+  }
+  var keyWord = fs.readFileSync('./keyword.json')
+  keyWord = JSON.parse(keyWord)
+  keyWord[newKeyWord.key] = newKeyWord.value
+  keyWord = JSON.stringify(keyWord)
+  fs.writeFile('message.txt', 'keyWord', (err) => {
+    if (err) {
+      res.send(err)
+      return
+    }
+    res.send("It's saved!")
+  })
+})
 app.post('/webhook/', function (req, res) {
   res.sendStatus(200)
   var messaging_events = req.body.entry[0].messaging
