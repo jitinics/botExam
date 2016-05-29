@@ -4,29 +4,44 @@
 	<title>Document</title>
 	<script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="./index.js"></script>
+
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
-<body ng-controller="botAppController">
-	<table>
-		<tr>
-			<td>Question</td>
-			<td>Answer</td>
-		</tr>
-		<tr ng-repeat="(key,value) in list">
-			<td>{{key}}</td>
-			<td>{{value}}</td>
-			<td ng-click="edit(key,value)">edit</td>
-			<td ng-click="delete(key)">delete</td>
-		</tr>
-		<tr>
-			<td><input type="text" ng-model="key" ng-disabled="isEdit"></td>
-			<td><input type="text" ng-model="ans"></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button ng-click="save()">save</button>
-			</td>
-		</tr>
-		
-	</table>
+<body ng-controller="botAppController" style="background-color:#d35400">
+	<div class="container-fluid">
+		<h1><center>KEY WORD EDIT PAGE<center></h1>
+		<div style="background-color:#fff;margin:50px 20px 20px 20px;border-radius:3px" >
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Question</th>
+						<th>Answer</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key,value) in list">
+						<td>{{key}}</td>
+						<td>{{value}}</td>
+						<td ng-click="edit(key,value)"><a href="">edit</a></td>
+						<td ng-click="delete(key)"><a href="">delete</a></td>
+					</tr>
+					<tr>
+						<td><input type="text"  class="form-control" ng-model="key" ng-disabled="isEdit"></td>
+						<td><input type="text"  class="form-control" ng-model="ans"></td>
+						<td colspan="2" align="center">For Add or Edit</td>
+					</tr>
+					<tr>
+						<td colspan="4" align="center">
+							<button ng-click="save()"  class="btn btn-primary btn-lg">save</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
