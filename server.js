@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
 function sum (data) {
   var ans = 0
   for (var i = 1;i < data.length;i++) {
-    ans += data[i]
+    ans += parseInt(data[i], 10)
   }
   return ans
 }
@@ -58,7 +58,7 @@ function max (data) {
   var ans = data[1]
   for (var i = 2;i < data.length;i++) {
     if (data[i] > ans) {
-      ans = data[i]
+      ans = parseInt(data[i], 10)
     }
   }
   return ans
@@ -67,7 +67,7 @@ function min (data) {
   var ans = data[1]
   for (var i = 2;i < data.length;i++) {
     if (data[i] < ans) {
-      ans = data[i]
+      ans = parseInt(data[i], 10)
     }
   }
   return ans
@@ -75,7 +75,7 @@ function min (data) {
 function avg (data) {
   var ans = 0
   for (var i = 1;i < data.length;i++) {
-    ans += data[i]
+    ans += parseInt(data[i], 10)
   }
   return ans / (data.length - 2)
 }
@@ -89,7 +89,9 @@ function sendTextMessage (sender, text) {
     method: 'POST',
     json: {
       recipient: {id: sender},
-      message: text
+      message: {
+        text: text
+      }
     }
   }, function (error, response, body) {
     if (error) {
