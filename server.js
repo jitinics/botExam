@@ -1,9 +1,10 @@
 var express = require('express')
 var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
 var app = express()
 var request = require('request')
-
+var keyWord = {
+  'สวัสดี': 'สวัสดีครับ'
+}
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -40,6 +41,7 @@ app.post('/webhook/', function (req, res) {
       }else if (text[0] === 'avg') {
         respone = avg(text)
       } else {
+        console.log(text)
         return
       }
       console.log('1', sender, respone)
@@ -77,7 +79,6 @@ function avg (data) {
   for (var i = 1;i < data.length;i++) {
     ans += parseInt(data[i], 10)
   }
-  console.log(ans , (data.length - 1))
   return ans / (data.length - 1)
 }
 var token = 'EAAG4ZCpU9FlABAPGEs9n6SdY4nCvjMiGAY7N743o4Lk4MjVPjOkPrkehxx0ybKNiNZCYYuRYj3W6TCC6psI1x1fAWngDA7KbsTfRXvAsPMeWboGCHkR9SD6wBlZCJDZB8cA9w8OhwMUCLuxFX6orrm7N2zXxrBWpYDrsQqLFnAZDZD'
